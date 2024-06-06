@@ -1,0 +1,37 @@
+{
+    "created_time": "2023-01-08T09:30:45Z",
+    "files": [
+        {
+            "attachment_folder": "",
+            "created_time": "2023-01-08T09:30:48Z",
+            "id": "109",
+            "modified_time": "2023-01-08T09:30:48Z",
+            "name": "传承卷.md",
+            "signature": "42496079596872",
+            "tags": [
+            ]
+        },
+        {
+            "attachment_folder": "",
+            "created_time": "2023-01-08T09:30:48Z",
+            "id": "110",
+            "modified_time": "2023-01-08T09:30:48Z",
+            "name": "宣传文案.md",
+            "signature": "123280119467336",
+            "tags": [
+            ]
+        }
+    ],
+    "folders": [
+        {
+            "name": "基础哲学"
+        },
+        {
+            "name": "工程哲学"
+        }
+    ],
+    "id": "71",
+    "modified_time": "2023-01-08T09:30:45Z",
+    "signature": "79316834225477",
+    "version": 3
+}
