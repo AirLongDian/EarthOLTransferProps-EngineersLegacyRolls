@@ -12,9 +12,9 @@
 [EN]
 # The Tower of Knowledge
 
-Knowledge can be noble, but not expensive
-Knowledge can be sold, but not monopolised
-Knowledge can be treasured, but it should not be shelved.
-Knowledge can have a price, but that price should not be an obstacle to the journey of the seeker.
-The flow of knowledge should be unrestricted and free.
-Because knowledge carries civilisation.
+Knowledge can be noble, but not expensive  
+Knowledge can be sold, but not monopolised  
+Knowledge can be treasured, but it should not be shelved.  
+Knowledge can have a price, but that price should not be an obstacle to the journey of the seeker.  
+The flow of knowledge should be unrestricted and free.  
+Because knowledge carries civilisation.  
