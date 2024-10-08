@@ -28,7 +28,7 @@
 ##### 通信结束后双方断开
 close 结束连接
 #### 1.2.2 流程描述（图）
-![Image Source](https://github.com/AirLongDian/EarthOLTransferProps-EngineersLegacyRolls/blob/main/%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E4%BC%A0%E6%89%BF%E5%8D%B7/Image%20Source/Socket1.2.2.png?raw=true)
+![Image Source/Socket1.2.2.png](https://github.com/AirLongDian/EarthOLTransferProps-EngineersLegacyRolls/blob/main/%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E4%BC%A0%E6%89%BF%E5%8D%B7/Image%20Source/Socket1.2.2.png?raw=true)
 
 #### 1.2.3 快速理解（如果你前俩看不懂就看这个）
 ###### 医院=服务器
@@ -49,7 +49,7 @@ close 结束连接
 ## 二. IO模型
 ### 2.1 同步/异步、阻塞/非阻塞
 #### 2.1.1 关系图
-![[IO2.1.png]]
+![Image Source/IO2.1.png](https://github.com/AirLongDian/EarthOLTransferProps-EngineersLegacyRolls/blob/main/%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E4%BC%A0%E6%89%BF%E5%8D%B7/Image%20Source/IO2.1.png?raw=true)
 **NOTE：异步情况下一定非阻塞，所以异步根本没有阻塞概念，<font color=red>异步阻塞与异步非阻塞都是错的</font>，异步就是异步！**
 #### 2.2.2 同步与异步
 同步与异步是指我们进行一个任务时，任务是否等待执行结果。
