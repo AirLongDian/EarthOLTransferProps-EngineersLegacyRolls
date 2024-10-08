@@ -30,6 +30,7 @@ thread th1(func);
 th1.join();
 ```
 主线程等待子线程执行完毕
+
 2. 分离子线程
 ```C++
 th1.detach();
