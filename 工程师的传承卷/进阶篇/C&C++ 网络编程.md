@@ -77,3 +77,147 @@ close 结束连接
 然后老板啥都不干了，坐在办公室等小王带着报表回来。
 这河狸吗？这不河狸！！
 小王告诉财务就该干啥干啥去了，报表在你邮箱里，你在办公室等小王干什么呢？
+
+## 三. 基本的基于Socket 的客户端与服务端实现（Linux环境）
+
+### 3.1 基本服务端实现
+```C++
+#include <iostream>
+#include <unistd.h>
+#include <sys/socket.h>
+#include <string>
+#include <arpa/inet.h>
+#include <cstring>
+using namespace::std;
+int main()
+{
+	// make socket
+	
+	int soct1 = socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);
+	if (soct1 == -1)
+	{
+		std::cerr<<"create socket  fail!"<<std::endl;
+		return -1;
+	}
+
+	// init ip address struct
+	struct sockaddr_in saddrin1;
+	saddrin1.sin_family = AF_INET;
+	saddrin1.sin_port = htons(12345);
+	saddrin1.sin_addr.s_addr = INADDR_ANY;
+	// bind socket to host
+	int ret = bind(soct1,(sockaddr*)&saddrin1,sizeof(saddrin1));
+	if(ret == -1)
+	{
+		std::cout<<"bind failled!"<<std::endl;
+		return -1;
+	}
+	// set listen
+	ret =listen(soct1,10);
+	if(ret == -1)
+	{
+		std::cout<<"listen failled!"<<std::endl;
+		return -1;
+	}
+	// init ip address
+	struct sockaddr_in saddrin2;
+	socklen_t addrlen =sizeof(saddrin2);
+	// access connect
+	int acc1 = accept(soct1,(sockaddr*)&saddrin2,&addrlen);
+	if(ret == -1)
+	{
+		std::cout<<"connect failled!"<<std::endl;
+		return -1;
+	}
+
+	// show c_ip addr
+	char ip[32];
+	cout<<inet_ntop(AF_INET,&saddrin2.sin_addr.s_addr,ip,sizeof(ip))<<"\n\n";
+	// make read buffer
+	char buff[1024];
+	// read
+	while(true)
+	{
+		int len = recv(acc1,buff,sizeof(buff),0);
+		if(len>0)
+		{
+			cerr<<buff<<endl;
+			memset(buff,0,sizeof(buff));
+			sprintf(buff,"hello customer!");
+			send(acc1,buff,strlen(buff)+1,0);
+		}
+		else if(len = 0)
+		{
+			break;
+		}
+		else
+		{
+			cerr<<"ERR";
+			break;
+		}
+	}
+	// clean connect
+	close(soct1);
+	close(acc1);
+
+	return 0;
+}
+
+```
+
+### 3.2 基本客户端实现
+
+```C++
+#include <iostream>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <cstring>
+int main()
+{
+	// make socket
+	int soct1=socket(AF_INET,SOCK_STREAM,0);
+	if(soct1 == -1)
+	{
+		std::cerr<<"create socket failed!"<<std::endl;
+		return -1;
+	}
+	// init ip address
+	struct sockaddr_in host;
+	host.sin_family = AF_INET;
+	host.sin_port = htons(12345);
+	host.sin_addr.s_addr = INADDR_ANY;
+	//connect
+	int flag=connect(soct1,(sockaddr*)&host,sizeof(sockaddr));
+	if (flag==-1)
+	{
+		std::cerr<<"connect failed"<<std::endl;
+		return -1;
+	}
+	char buffer[1024];
+	//communicate
+	while (true)
+	{	
+		sprintf(buffer,"hello server!");
+		send(soct1,buffer,strlen(buffer)+1,0);
+		//reset buffer
+		memset(buffer,0,sizeof(buffer));
+		int rec1=recv(soct1,buffer,sizeof(buffer),0);
+		if (rec1>0)
+		{
+			std::cerr<<buffer<<std::endl;
+		}
+		else if (rec1=0)
+		{
+			std::cerr<<"server disconnect"<<std::endl;
+		}
+		else
+		{
+			std::cerr<<"send failed"<<std::endl;
+		}
+		sleep(1);
+	}
+	close(soct1);
+	
+}
+
+```
