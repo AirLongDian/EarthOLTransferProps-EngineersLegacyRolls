@@ -29,7 +29,7 @@
 close 结束连接
 #### 1.2.2 流程描述（图）
 
-![..//Image\ Source/Socket1.2.2.png](..//Image\ Source/Socket1.2.2.png)
+[![..//Image\ Source/Socket1.2.2.png]([..//Image\ Source/Socket1.2.2.png](https://github.com/AirLongDian/EarthOLTransferProps-EngineersLegacyRolls/blob/main/%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E4%BC%A0%E6%89%BF%E5%8D%B7/Image%20Source/Socket1.2.2.png?raw=true))](https://github.com/AirLongDian/EarthOLTransferProps-EngineersLegacyRolls/blob/main/%E5%B7%A5%E7%A8%8B%E5%B8%88%E7%9A%84%E4%BC%A0%E6%89%BF%E5%8D%B7/Image%20Source/Socket1.2.2.png?raw=true)
 
 #### 1.2.3 快速理解（如果你前俩看不懂就看这个）
 ###### 医院=服务器
