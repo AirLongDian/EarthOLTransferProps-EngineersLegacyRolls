@@ -55,44 +55,47 @@ th1.joinable();
 ```C++
 thread th1(成员函数指针，成员函数所属的对象，参数（可能需要包装）)
 ```
-## 四、异步
-#### 4.1 包含头文件
+
+## 四、线程池概念与生产者消费者问题
+
+## 五、异步
+#### 5.1 包含头文件
 ```C++
 #include <future>
 ```
-#### 4.2 创建未来返回值对象
+#### 5.2 创建未来返回值对象
 ```C++
 future<type> fu1;
 ```
-#### 4.3 异步运行
+#### 5.3 异步运行
 ```C++
 fu1=async(func/lambda)
 ```
 * 此时程序分出一个线程执行异步程序，并继续向后执行
-#### 4.4 取回异步运行结果
+#### 5.4 取回异步运行结果
 
 ```C++
 fu1.get()
 ```
 * 此时异步程序若仍未执行完，将阻塞程序至异步程序执行完并取回值
-#### 4.5 等待异步程序执行完毕但不需要返回结果
+#### 5.5 等待异步程序执行完毕但不需要返回结果
 ```C++
 fu1.wait()
 ```
-#### 4.6 仅等待一段时间（超时检测）
+#### 5.6 仅等待一段时间（超时检测）
 ```C++
 fu1.wait_for(chrono时间单位（）)
 ```
 * 如超时未执行完毕则返回`future_status::timeout`,按时执行完毕则返回`future_status::ready`
-#### 4.7 不异步仅延迟至get时运行
+#### 5.7 不异步仅延迟至get时运行
 将`async`第一个参数设为`std::launch::deferred`
-#### 4.8 手动管理线程
+#### 5.8 手动管理线程
 不使用async而是使用promise
 ```C++
 std::promise<type> pr1=promise(func/lambda)
 ```
 在传入的可执行体中设置未来值`pr1.set_value()`，然后在外面`get_future`获取未来返回值对象，并进一步get获取未来值
-## 五、锁
+## 六、锁
 ###### 1. 导入头文件
 ```C++
 #include <mutex>
@@ -147,7 +150,7 @@ shared_lock sl1(shared_mutexd对象) //自动解锁（类似unique_lock）
 4. 使用`scoped_lock sl1(mtx1,mtx2,...)`对多个锁上锁可以确保不产生死锁并自动解锁
 5. 单个线程死锁可以用`recursice_mutex`代替`mutex`,每次加锁会加一个计数，计数0解锁，但是会有性能损失
 
-## 六、条件变量
+## 七、条件变量
 #### 1. 导入头文件
 ```C++
 #include <condition_variable>
@@ -168,7 +171,7 @@ cv1.notify_all() //唤醒所有wait的线程
 ```
 * `condition_variable`只支持`unique_lock`，其他锁可以用`condition_variable_any`
 * 也有`wait_for()`和`wait_until()`,会返回布尔值作为等待结果
-## 七、原子操作
+## 八、原子操作
 ```C++
 atomic<type> name
 ```
